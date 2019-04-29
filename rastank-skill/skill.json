@@ -1,0 +1,46 @@
+{
+  "manifest": {
+    "apis": {
+      "custom": {
+        "endpoint": {
+          "uri": "arn:aws:lambda:ap-northeast-1:524326266976:function:RasConTankSkill"
+        },
+        "interfaces": []
+      }
+    },
+    "manifestVersion": "1.0",
+    "privacyAndCompliance": {
+      "locales": {
+        "ja-JP": {}
+      },
+      "allowsPurchases": false,
+      "usesPersonalInfo": false,
+      "isChildDirected": false,
+      "isExportCompliant": true,
+      "containsAds": false
+    },
+    "publishingInformation": {
+      "locales": {
+        "ja-JP": {
+          "name": "ラズタンク",
+          "smallIconUri": "https://s3.amazonaws.com/ディスプレイデバイスに表示される画像のURL",
+          "largeIconUri": "https://s3.amazonaws.com/ディスプレイデバイスに表示される画像のURL",
+          "summary": "ラズパイで作った戦車を操作できます",
+          "description": "「前進」や「左に曲がれ」などの指令を与えて戦車を操作できます",
+          "examplePhrases": [
+            "右に曲がれ、上を見て"
+          ],
+          "keywords": [
+            "ラズパイ",
+            "戦車",
+            "ラジコン"
+          ]
+        }
+      },
+      "isAvailableWorldwide": true,
+      "testingInstructions": "「右向け」で右向く",
+      "category": "EDUCATION_AND_REFERENCE",
+      "distributionCountries": []
+    }
+  }
+}

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, user-scalable=no">
+<title>8 - クローラーの操作 (サーボで上下移動可能なカメラつき)</title>
+<!-- jQuery UI -->
+<link rel="stylesheet" href="js/jquery-ui.min.css">
+<script src="js/jquery-1.12.2.min.js"></script>
+<script src="js/jquery-ui.min.js"></script>
+<script src="js/jquery.ui.touch-punch.min.js"></script>
+
+<!-- WebIOPi -->
+<script src="js/require.js"></script>
+<script>
+require(["/webiopi.js", "javascript.js"], function(){
+    webiopi().ready( initialize_webiopi );
+});
+</script>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font: 13px Helvetica, Arial; }
+  #sender { background: #000; padding: 5px; position: fixed; bottom: 0; width: 100%; }
+  #msg { border: 0; padding: 10px; width: 80%; margin-right: .5%; }
+  #btn { width: 15%; background: rgb(130, 224, 255); border: none; padding: 10px; }
+  #msglist { list-style-type: none; margin: 40; padding: 0; }
+  #msglist li { padding: 5px 10%; }
+  #msglist li:nth-child(odd) { background: #eee; }
+  #msglist { margin-bottom: 40px; }
+</style>
+</head>
+</head>
+<body>
+<div align="center">
+    <div id="box">
+        <span id="touchArea"><canvas id="canvas" oncontextmenu="return false;"></canvas></span>
+        <span id="slider_servo"></span>
+    </div>
+    <div id="chat" align="left">
+       <ul id="msglist"></ul>
+       <div id="sender">
+          <input id="msg" autocomplete="off" />
+          <input type="button" id="btn" value="Send">
+       </div>
+    </div>
+</div>
+
+
+
+    <script>
+        var sock = new WebSocket('wss://hogehoge.execute-api.ap-northeast-1.amazonaws.com/Prod');
+        // 接続
+            sock.addEventListener('open',(e) => {
+            console.log('Socket 接続成功');
+            $('#msg').focus();
+        });
+
+        // サーバーからデータを受け取る
+        sock.addEventListener('message',(e) => {
+            //$('#msglist').append($('<li>').text(e.data));
+            $('#msglist').prepend($('<li>').text(e.data));
+            //window.scrollTo(0, document.body.scrollHeight);
+        });
+
+        document.addEventListener('DOMContentLoaded',(e) => {
+            // サーバーにデータを送る
+          document.getElementById('btn').addEventListener('click',(e) => {send();});
+          document.getElementById('msg').addEventListener('keypress', onKeyPress);
+        });
+
+        function onKeyPress(e) {
+            if ( e.keyCode !== 13 || ( e.keyCode === 13 && (e.shiftKey === true || e.ctrlKey === true || e.altKey === true) )) { // Enterキー除外
+                return false;
+            }
+            send();
+        }
+
+        function send() {
+            sock.send('{"action":"sendMessage", "data":"' + $('#msg').val() + '"}');
+            $('#msg').val('');
+            $('#msg').focus();
+        };
+    </script>
+
+</body>
+</html>

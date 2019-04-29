@@ -1,0 +1,15 @@
+[Unit]
+Description=A server for streaming Motion-JPEG from a video capture device
+After=network.target
+
+[Service]
+Type=simple
+Environment=LD_LIBRARY_PATH=/opt/mjpg-streamer/
+ExecStart=/opt/mjpg-streamer/mjpg_streamer -i "input_raspicam.so -fps 15 -q 50 -x 640 -y 480" -o "output_http.so -p 9000 -w /opt/mjpg-streamer/www"
+#ExecStart=/opt/mjpg-streamer/mjpg_streamer -i "input_file.so -f /home/pi/darknet-nnpack -n predictions.png" -o "output_http.so -p 9000 -w /opt/mjpg-streamer/www"
+#ExecStart=/opt/mjpg-streamer/mjpg_streamer -i "input_file.so -f /home/pi/darknet-nnpack -r" -o "output_http.so -p 9000 -w /opt/mjpg-streamer/www"
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+

@@ -1,0 +1,148 @@
+{
+  "interactionModel": {
+    "languageModel": {
+      "invocationName": "ラズタンク",
+      "intents": [
+        {
+          "name": "AMAZON.CancelIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.HelpIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.StopIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.NavigateHomeIntent",
+          "samples": []
+        },
+        {
+          "name": "ForwardIntent",
+          "slots": [],
+          "samples": [
+            "前に進め",
+            "前進",
+            "ゴー"
+          ]
+        },
+        {
+          "name": "BackIntent",
+          "slots": [],
+          "samples": [
+            "後ろに進め",
+            "後進",
+            "バック",
+            "戻れ"
+          ]
+        },
+        {
+          "name": "RightIntent",
+          "slots": [],
+          "samples": [
+            "右に進め",
+            "右に曲がれ",
+            "右にカーブ",
+            "右折",
+            "右折して",
+            "右折しろ"
+          ]
+        },
+        {
+          "name": "LeftIntent",
+          "slots": [],
+          "samples": [
+            "左に進め",
+            "左に曲がれ",
+            "左にカーブ",
+            "左折",
+            "左折して",
+            "左折しろ"
+          ]
+        },
+        {
+          "name": "DirectionIntent",
+          "slots": [
+            {
+              "name": "Direction",
+              "type": "Direction"
+            }
+          ],
+          "samples": [
+            "{Direction} を向け",
+            "{Direction} 見ろ",
+            "{Direction} 見て",
+            "{Direction} を見て",
+            "{Direction} を向いて",
+            "{Direction} 向け",
+            "{Direction} 向いて"
+          ]
+        },
+        {
+          "name": "StopIntent",
+          "slots": [],
+          "samples": [
+            "止まって",
+            "停止",
+            "止まれ",
+            "ストップ"
+          ]
+        },
+        {
+          "name": "DanceIntent",
+          "slots": [],
+          "samples": [
+            "ダンス",
+            "踊って",
+            "踊れ"
+          ]
+        }
+      ],
+      "types": [
+        {
+          "values": [
+            {
+              "name": {
+                "value": "正面"
+              }
+            },
+            {
+              "name": {
+                "value": "左"
+              }
+            },
+            {
+              "name": {
+                "value": "上"
+              }
+            },
+            {
+              "name": {
+                "value": "下"
+              }
+            },
+            {
+              "name": {
+                "value": "右"
+              }
+            },
+            {
+              "name": {
+                "value": "後ろ"
+              }
+            },
+            {
+              "name": {
+                "value": "前"
+              }
+            }
+          ],
+          "name": "Direction"
+        }
+      ]
+    }
+  },
+  "version": "10"
+}
